@@ -1,9 +1,29 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Button, Table, Nav, Navbar, Container, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Songs from './Songs'
+// import Songs from './Songs'
+import {Get_SONGS} from "../graphql/songQuery";
+import { useQuery } from '@apollo/client';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const Home = () => {
+
+  const navigate = useNavigate();
+  const [allSongsData , setAllSongsData] = useState([])
+  const { data } = useQuery(Get_SONGS,{
+    fetchPolicy:'no-cache'
+  })
+
+
+  useEffect(()=>{
+    if(data?.allSongs){
+      setAllSongsData(data.allSongs);
+    }
+  },[data])
+
+
   return (
     <Fragment>
       <div className='mt-3'>
@@ -28,8 +48,7 @@ const Home = () => {
           </Container>
         </Navbar>
         <div style={{ display: "flex" }}>
-          <h2>Top 10 songs</h2>
-          <Button variant="primary" style={{ marginLeft: 'auto' }}>+ Add Songs</Button>{' '}
+          <Button variant="primary" type='button' onClick={()=>{navigate("/add-Songs")}} style={{ marginLeft: 'auto' }}>+ Add Songs</Button>{' '}
         </div>
       </div>
 
@@ -47,9 +66,9 @@ const Home = () => {
             </tr>
           </thead>
           <tbody>
-            {Songs.map((item) => {
+            {allSongsData.map((item) => {
               return (
-                <tr>
+                <tr key={item.id}>
                   <td>
                     <img src={item.img} width={171}
                       height={180}
@@ -87,9 +106,9 @@ const Home = () => {
             </tr>
           </thead>
           <tbody>
-            {Songs.map((item) => {
+            {allSongsData.map((item) => {
               return (
-                <tr>
+                <tr key={item.key}>
                   <td>{item.author_name}</td>
                   <td>{item.date_of_birth}</td>
                   <td>{item.other_songs}</td>
@@ -100,13 +119,6 @@ const Home = () => {
           </tbody>
         </Table>
       </div>
-
-
-
-
-
-
-
     </Fragment>
   )
 }
