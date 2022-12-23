@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { Button, Table, Nav, Navbar, Container, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import Songs from './Songs'
-import {Get_SONGS} from "../graphql/songQuery";
+import Get_SONGS from "../graphql/songQuery";
 import { useQuery } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 

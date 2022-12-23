@@ -4,7 +4,9 @@ import { useRef } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router-dom';
-import {CREATE_NewSong} from "../graphql/songMutation";
+import CREATE_NewSong from "../graphql/songMutation";
+
+import
 
 
 const AddSongs=()=>{
