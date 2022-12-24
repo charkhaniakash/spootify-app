@@ -102,7 +102,7 @@ module.exports = {
     },
     {
       id: 10,
-      name: "death bed (coffee for your head)",
+      name: "Akash",
       author_name: "Powfu",
       img: "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg",
       musicName: "death_bed.mp3",
