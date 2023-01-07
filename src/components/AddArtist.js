@@ -72,10 +72,6 @@ const AddArtist = () => {
                                 <Form.Control as="textarea" rows={3} />
                             </Form.Group>
 
-akashh  
-ojdfoijeiorhjfih
-
-
                             <Button variant="primary" onClick={addingArtist} type="submit">Done</Button>
                             <Button variant="primary" type="submit">cancel</Button>
                         </Form>
